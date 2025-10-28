@@ -1,0 +1,76 @@
+[Network Dashboards]
+icon=icon_plus
+isCategory=true
+
+    [Potent Pi's]
+    url=http://10.100.0.12:3030/d/be1okdjfg2kg0c/potentpi-dashboard?orgId=1&from=now-24h&to=now&timezone=browser&theme=dark&kiosk=1
+    icon=icon_piechart
+    iframe=true
+
+    [PfSenseRouter]
+    url=http://10.100.0.12:3030/d/ce6mc1th1do1sa/pfsense-router?orgId=1&from=now-24h&to=now&timezone=browser&theme=dark&kiosk=1
+    icon=icon_piechart
+    iframe=true
+
+    [24h graph test]
+    url=http://10.100.0.12:3030/d/5f769727-5454-4338-b8e7-b2338347ef1c/24h-dashboard?orgId=1&from=now-24h&to=now&timezone=browser&theme=dark&kiosk=1
+    icon=icon_piechart
+    iframe=true
+
+[Monitoring Software]
+icon=icon_plus
+isCategory=true
+
+    [Grafana]
+    url=http://10.100.0.12:3030
+    icon=icon_table
+    iframe=true
+
+    [Uptime Kuma]
+    url=http://10.100.0.12:3001
+    icon=icon_table
+    iframe=true
+
+[Quick Links]
+icon=icon_plus
+isCategory=true
+
+    [Amazon]
+    url=https://www.amazon.com/
+    icon=icon_bag
+    iframe=false
+
+    [eBay]
+    url=https://www.ebay.com/
+    icon=icon_cart
+    iframe=false
+
+    [Facebook]
+    url=https://www.facebook.com/
+    icon=social_facebook
+    iframe=false
+
+    [Gmail]
+    url=https://www.gmail.com/
+    icon=icon_mail
+    iframe=false
+
+    [Google Drive]
+    url=https://www.drive.google.com
+    icon=social_googledrive
+    iframe-false
+
+    [PC Part Picker]
+    url=https://www.pcpartpicker.com/
+    icon=icon_desktop
+    iframe=false
+
+    [Router]
+    url=http://yggdrasil.onyxnet.lan
+    icon=icon_globe-2
+    iframe=false
+
+    [Youtube]
+    url=https://www.youtube.com/
+    icon=social_youtube
+    iframe=false

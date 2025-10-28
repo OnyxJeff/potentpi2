@@ -1,0 +1,2 @@
+## Pre-requisites
+Please make sure to change the values in `/code/config.ini.example` and `/code/bookmarks.dat.example` according to what you want it to do and display. Once finished save them as `config.ini` and `bookmarks.dat`.

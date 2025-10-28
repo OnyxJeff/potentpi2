@@ -1,0 +1,11 @@
+GF_SECURITY_ADMIN_PASSWORD=changeme!            # change the default password
+GF_USERS_ALLOW_SIGN_UP=false                    # change if you wish to allow people to signup
+GF_INSTALL_PLUGINS=flant-statusmap-panel        # required plugin for the 'internet-connection' dashboard
+GF_SECURITY_ALLOW_EMBEDDING=false               # change to 'true' if you wish to put dashboards into other apps or websites 
+GF_SMTP_ENABLED=true                            # email plugin for notifications
+GF_SMTP_HOST=smtp.gmail.com:587                 # default google host
+GF_SMTP_USER='me@example.com'                   # change to your email address
+GF_SMTP_PASSWORD='thinkyoucanhavemypassword?'   # change to your password
+GF_SMTP_SKIP_VERIFY=true
+GF_SMTP_FROM_ADDRESS=j.may2702@gmail.com        # email address you wish to have the notifications come from
+GF_AUTH_ANONYMOUS_ENABLED=true                  # allows anyone to view links to dashboards without logging in
