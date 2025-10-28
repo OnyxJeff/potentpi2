@@ -6,7 +6,7 @@
 ![GitHub release](https://img.shields.io/github/v/release/OnyxJeff/pp2-mimir)
 ![Issues](https://img.shields.io/github/issues/OnyxJeff/pp2-mimir)
 
-**Mimir** is the internal playground server for my homelab, hosted on a Raspberry Pi 4.
+**Mimir** is the Monitoring server for my homelab, hosted on a Raspberry Pi 4.
 
 ## 📁 Repo Structure
 
