@@ -14,7 +14,7 @@
 pp2-mimir/
 ├── .github/workflows/      # CI for YAML validation
 ├── backup_logs/            # Oldest logs from update script
-├── dockprom/               # Docker container(s) for Prometheus Node Exporter for RPi
+├── docker/                 # Docker container(s) for Network Monitoring
 ├── images/                 # Images for README files
 ├── logs/                   # Most recent update script logs
 ├── scripts/                # Auto-Updater script for RPi (can be associated with cronjob)
@@ -25,25 +25,12 @@ pp2-mimir/
 ---
 
 ## 🧰 Services
-- Testing docker container configs for RPi's
 
-- Developing documentation on other RPi setups currently in my homelab.
-  - This allows me to develop proper documentation for existing RPis without taking down my current services
-
-- Current RPi Services in production
-  - Odin
-    - PiHole
-    - Dockprom
-  - Mimir
-    - Grafana 
-    - Dockprom
-    - UniFi Controller
-    - Uptime Kuma
-    - Ookla Internet SpeedTest
-    - Static-Site Generator (NGinx)
-  - Loki
-    - Transmission Server
-    - Dockprom
+  - **Grafana**: Visualizes metrics and analytics through customizable dashboards.
+  - **UniFi Controller**: Manages UniFi network devices and monitors network performance.
+  - **Uptime Kuma**: Monitors website and service uptime with alerts on failures.
+  - **Ookla Internet SpeedTest**: Measures and logs internet connection speed and latency.
+  - **Static-Site Generator (NGinx)**: Serves pre-built static websites via a lightweight web server.
 
 ---
 
@@ -113,10 +100,11 @@ docker compose version
 
 ## Installing your first container(s)
 
-- Installing Dockprom (Prometheus Exporter)
+- Installing Monitoring Stack (via script)
 ```bash
-cd ~/pp2-mimir/dockprom
-docker compose up -d
+cd ~/pp2-mimir/scripts
+chmod +x docker-up-all.sh
+./docker-up-all.sh
 ```
 
 ---
@@ -126,7 +114,9 @@ docker compose up -d
 This project uses or is inspired by the following repositories:
 
 - [U6143_ssd1306](https://github.com/UCTRONICS/U6143_ssd1306) – Provides the C display code used in the systemd service setup.
-- [Dockprom](https://github.com/stefanprodan/dockprom) – Used for Docker-based Prometheus monitoring and metrics collection.
+- [UniFi-RPi](https://github.com/ryansch/docker-unifi-rpi) - UniFi Controller for Raspberry Pi.
+- [Internet Monitoring](https://github.com/tb942/internet-monitoring) – Used for Docker-based Prometheus monitoring and metrics collection as well as Ookla Speedtest.
+- [Uptime-Kuma](https://github.com/louislam/uptime-kuma) - Uptime Kuma visual server monitoring.
 
 ---
 

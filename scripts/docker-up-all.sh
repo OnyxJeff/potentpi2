@@ -1,16 +1,20 @@
 #!/bin/bash
-# Run docker compose up -d in multiple folders sequentially
+# Run docker compose up -d in all docker project folders automatically
+# For pp2-Mimir
 
-# Exit immediately if a command fails
-set -e
+set -e  # Exit immediately on any error
 
-# Define your target directories
-dirs=(
-  "~/pp2-mimir/docker/internet-monitoring"
-  "~/pp2-mimir/docker/nginx"
-  "~/pp2-mimir/docker/unifi"
-  "~/pp2-mimir/docker/uptime-kuma"
-)
+DOCKER_BASE="$HOME/pp2-mimir/docker"
+
+echo "=== 🚀 Auto-starting all Docker Compose stacks under: $DOCKER_BASE ==="
+
+# Find directories containing docker-compose.yml or compose.yml
+mapfile -t dirs < <(find "$DOCKER_BASE" -type f \( -name "docker-compose.yml" -o -name "compose.yml" \) -exec dirname {} \; | sort)
+
+if [ ${#dirs[@]} -eq 0 ]; then
+  echo "⚠️  No docker-compose.yml files found under $DOCKER_BASE"
+  exit 0
+fi
 
 for dir in "${dirs[@]}"; do
   echo "--------------------------------------"
@@ -22,4 +26,4 @@ for dir in "${dirs[@]}"; do
   echo
 done
 
-echo "🚀 All Docker Compose stacks are up!"
+echo "=== ✅ All Docker Compose stacks started successfully! ==="
