@@ -16,7 +16,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOG_FILE="$(dirname "$SCRIPT_DIR")/logs/apt-get-autoupdater.log"
 NOW=$(date "+%Y-%m-%d %H:%M:%S")
 
-echp >> "$LOG_FILE"
+echo >> "$LOG_FILE"
 date >> "$LOG_FILE"
 echo "############################" >> "$LOG_FILE"
 echo "[$NOW] Starting apt-get autoupdate..." >> "$LOG_FILE"
