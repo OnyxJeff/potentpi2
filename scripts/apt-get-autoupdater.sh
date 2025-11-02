@@ -13,7 +13,7 @@
 # This script is released under the BSD 3-Clause License.
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-LOG_FILE="$SCRIPT_DIR/logs/apt-get-autoupdater.log"
+LOG_FILE="$(dirname "$SCRIPT_DIR")/logs/apt-get-autoupdater.log"
 NOW=$(date "+%Y-%m-%d %H:%M:%S")
 
 echp >> "$LOG_FILE"
