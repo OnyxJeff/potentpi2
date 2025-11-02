@@ -46,7 +46,7 @@ sudo apt install git -y
   - Download repo
 ```bash
 cd
-git clone https://github.com/OnyxJeff/pp1-odin.git
+git clone https://github.com/OnyxJeff/pp2-mimir.git
 ```
 
 ```bash
