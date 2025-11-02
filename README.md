@@ -112,7 +112,8 @@ sudo sh get-docker.sh
 sudo usermod -aG docker $USER
 ```
 
-  - After running this command you will need to log out and log back in (or I recommend just rebooting) for the changes to take effect.
+> [!IMPORTANT]
+> After running this command you will need to log out and log back in (or I recommend just rebooting) for the changes to take effect.
 
 - Install Docker Compose:
 ```bash
