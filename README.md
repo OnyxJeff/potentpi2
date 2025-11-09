@@ -75,7 +75,7 @@ sudo ./setup_display_service.sh
 
 ---
 
-## 📦 Updating and Installing Docker Compose
+## ⚠️ Updating the OS
 
 - Update and Upgrade the System via script:
 ```bash
@@ -99,6 +99,60 @@ sudo crontab -e
     51 00 1 * * rm -f $HOME/pp2-mimir/logs/apt-get-autoupdater.log
       # deletes old weekly log on the 1st of every month at 00:51 am
   ```
+
+## 🌐 Installing Speedtest-CLI
+
+- Run the following command to install gnupg1, apt-transport-https, dirmngr and lsb-release to your Raspberry Pi.
+```bash
+sudo apt install apt-transport-https gnupg1 dirmngr lsb-release
+```
+  - ```text apt-transport-https``` package is used to add support for the https protocol to the apt package manager. Without it apt will throw errors when connecting to Ookla’s package repository.
+
+  - ```text gnupg1``` is used for secure communication between your Raspberry Pi and the Speedtest.net servers.
+
+  - ```text dirmngr``` is utilized for handling the addition of the package repository to your Raspberry Pi’s sources list.
+
+  - ```text lsb-release``` is to grab the operating systems release name.
+
+- With the packages we need installed we can now add the GPG key for Ookla’s Speedtest repository to the keychain.
+
+We need this keychain to be able to download the speedtest command line interface to our Raspberry Pi.
+```bash
+curl -L https://packagecloud.io/ookla/speedtest-cli/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/speedtestcli-archive-keyring.gpg >/dev/null
+```
+
+- Next we need to add the Ookla repository to our sources list.
+
+Without adding the repository we won’t be able to install the Speedtest CLI to our Raspberry Pi.
+
+You can add this repository by running the following command.
+```bash
+echo "deb [signed-by=/usr/share/keyrings/speedtestcli-archive-keyring.gpg] https://packagecloud.io/ookla/speedtest-cli/debian/ $(lsb_release -cs) main" | sudo tee  /etc/apt/sources.list.d/speedtest.list
+```
+Within this command, you will notice we use “$(lsb_release -cs)“. This bit of text allows us to insert the release name for our installation of Raspberry Pi OS directly into the command.
+
+- As we added a new package repository we need to update our package list.
+
+Updating the package list is as simple as running the following command.
+```bash
+sudo apt update
+```
+
+- Finally, we can install the official Speedtest CLI to our Raspberry Pi from Ookla.
+
+Use the following command to install the package to your device.
+```bash
+sudo apt install speedtest
+```
+
+- We can now test that we have installed the speedtest software to your Raspberry Pi.
+
+Let us run the following command to start up the speedtest.
+```bash
+speedtest
+```
+
+## 📦 Installing Docker Compose
 
 - Install Docker
 ```bash
@@ -128,7 +182,7 @@ docker compose version
 
 ---
 
-## Installing your first container(s)
+### 📝 Installing your first container(s)
 
 - Installing Monitoring Stack (via script)
 ```bash
