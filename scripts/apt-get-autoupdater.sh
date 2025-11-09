@@ -3,11 +3,11 @@
 # run
 # crontab -e
 # OS-Auto-Updater
-    # 00 01 * * 0 bash /home/potentpi4/apt-get-autoupdater.sh
+    # 00 01 * * 0 bash /home/potentpi2/pp2-mimir/scripts/apt-get-autoupdater.sh
         # execute automatic update script and log every sunday at 01:00 am
-    # 50 00 1 * * /bin/bash -c 'cp /home/potentpi4/logs/apt-get-autoupdater.log /home/potentpi4/backup_logs/apt-get-autoupdater-$(date +\%Y\%m\%d).log'
+    # 50 00 1 * * /bin/bash -c 'cp /home/potentpi2/pp2-mimir/logs/apt-get-autoupdater.log /home/potentpi2/pp2-mimir/backup_logs/apt-get-autoupdater-$(date +\%Y\%m\%d).log'
         # saves monthly version of "apt-get-autoupdater.log" on the 1st of every month at 00:50 am
-    # 51 00 1 * * rm -f /home/potentpi4/logs/apt-get-autoupdater.log
+    # 51 00 1 * * rm -f /home/potentpi2/pp2-mimir/logs/apt-get-autoupdater.log
         # deletes old weekly log on the 1st of every month at 00:51 am
 # apt-get update script for cron automatization
 # This script is released under the BSD 3-Clause License.

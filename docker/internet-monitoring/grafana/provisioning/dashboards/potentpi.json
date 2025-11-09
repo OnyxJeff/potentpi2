@@ -19,7 +19,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 3,
+  "id": 7,
   "links": [],
   "panels": [
     {
@@ -237,7 +237,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "100 - (avg by(instance) (irate(node_cpu_seconds_total{mode=\"idle\",instance=\"192.168.1.18:9100\"}[1m])) * 100)",
+          "expr": "100 - (avg by(instance) (irate(node_cpu_seconds_total{mode=\"idle\",job=\"nodeexp\"}[1m])) * 100)",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "CPU Usage",
@@ -3226,6 +3226,6 @@
   "timezone": "browser",
   "title": "PotentPi Dashboard",
   "uid": "be1okdjfg2kg0c",
-  "version": 2,
+  "version": 1,
   "weekStart": "sunday"
 }
