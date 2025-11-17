@@ -8,7 +8,7 @@
 $dl = array
 (
     'dashlet1' => array(
-        'url' => 'http://svr-mimir.asgard.onyxnet.lan:3001/status/infra-overview',
+        'url' => 'http://svr-mimir.onyxnet.lan:3001/status/infra-overview',
         'height' => '700',
         'width' => '100%'
     )

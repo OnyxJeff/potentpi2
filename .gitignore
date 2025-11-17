@@ -2,3 +2,6 @@
 *.bak
 secrets/
 *.env
+*.monitoring
+*.ini
+*.dat

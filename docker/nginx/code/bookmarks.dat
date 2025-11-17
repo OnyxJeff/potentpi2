@@ -3,17 +3,17 @@ icon=icon_plus
 isCategory=true
 
     [Potent Pi's]
-    url=http://10.100.0.12:3030/d/be1okdjfg2kg0c/potentpi-dashboard?orgId=1&from=now-24h&to=now&timezone=browser&theme=dark&kiosk=1
+    url=http://svr-mimir.onyxnet.lan:3030/d/be1okdjfg2kg0c/potentpi-dashboard?orgId=1&from=now-24h&to=now&timezone=browser&theme=dark&kiosk=1
     icon=icon_piechart
     iframe=true
 
     [PfSenseRouter]
-    url=http://10.100.0.12:3030/d/ce6mc1th1do1sa/pfsense-router?orgId=1&from=now-24h&to=now&timezone=browser&theme=dark&kiosk=1
+    url=http://svr-mimir.onyxnet.lan:3030/d/ce6mc1th1do1sa/pfsense-router?orgId=1&from=now-24h&to=now&timezone=browser&theme=dark&kiosk=1
     icon=icon_piechart
     iframe=true
 
     [24h graph test]
-    url=http://10.100.0.12:3030/d/5f769727-5454-4338-b8e7-b2338347ef1c/24h-dashboard?orgId=1&from=now-24h&to=now&timezone=browser&theme=dark&kiosk=1
+    url=http://svr-mimir.onyxnet.lan:3030/d/5f769727-5454-4338-b8e7-b2338347ef1c/24h-dashboard?orgId=1&from=now-24h&to=now&timezone=browser&theme=dark&kiosk=1
     icon=icon_piechart
     iframe=true
 
@@ -22,12 +22,12 @@ icon=icon_plus
 isCategory=true
 
     [Grafana]
-    url=http://10.100.0.12:3030
+    url=http://svr-mimir.onyxnet.lan:3030
     icon=icon_table
     iframe=true
 
     [Uptime Kuma]
-    url=http://10.100.0.12:3001
+    url=http://svr-mimir.onyxnet.lan:3001
     icon=icon_table
     iframe=true
 
