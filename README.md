@@ -195,6 +195,14 @@ docker compose version
 
 ### 📝 Installing your first container(s)
 
+- Create/modify your `config.monitoring` environment file
+  - navigate to `~/pp2-mimir/docker/internet-monitoring/grafana` and modify the `config.monitoring.example` file with your variables
+  ```bash
+  nano ~/pp2-mimir/docker/internet-monitoring/grafana/config.monitoring.example
+  ```
+
+  - `CTRL` + `x` to save and save as `config.monitoring`
+
 - Installing Monitoring Stack (via script)
 ```bash
 cd ~/pp2-mimir/scripts
@@ -210,7 +218,7 @@ This project uses or is inspired by the following repositories:
 
 - [U6143_ssd1306](https://github.com/UCTRONICS/U6143_ssd1306) – Provides the C display code used in the systemd service setup.
 - [UniFi-RPi](https://github.com/ryansch/docker-unifi-rpi) - UniFi Controller for Raspberry Pi.
-- [Internet Monitoring](https://github.com/tb942/internet-monitoring) – Used for Docker-based Prometheus monitoring and metrics collection as well as Ookla Speedtest.
+- [Internet Monitoring](https://github.com/tb942/internet-monitoring) – Used as insiration for Docker-based Prometheus monitoring and metrics collection as well as Ookla Speedtest.
 - [Uptime-Kuma](https://github.com/louislam/uptime-kuma) - Uptime Kuma visual server monitoring.
 
 ---
