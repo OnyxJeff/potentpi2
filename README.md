@@ -159,6 +159,8 @@ sudo apt install speedtest
 speedtest
 ```
 
+  - You will need to type `YES` the first time to accept the license. This is not an optional step
+
 ---
 
 ## 📦 Installing Docker Compose
