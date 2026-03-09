@@ -87,6 +87,7 @@ cd ~/pp2-mimir/scripts
 chmod +x apt-get-autoupdater.sh
 sudo ./apt-get-autoupdater.sh
 ```
+It's going to look like this froze, but just let it go.
 
 - Start CronJob (optional but recommended if doing headless/always on installation)
 ```bash
