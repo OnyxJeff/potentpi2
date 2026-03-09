@@ -1,98 +1,63 @@
-volumes:
-    prometheus_data: {}
-    grafana_data: {}
-
-networks:
-  front-tier:
-  back-tier:
-
 services:
+
   prometheus:
-    image: prom/prometheus-linux-armv7:latest
-    volumes:
-      - ./prometheus/:/etc/prometheus/
-      - prometheus_data:/prometheus
-    command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
-      - '--storage.tsdb.path=/prometheus'
-      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
-      - '--web.console.templates=/usr/share/prometheus/consoles'
-    ports:
-      - 9090:9090
+    image: prom/prometheus:latest
+    container_name: internet-prometheus
     restart: unless-stopped
-    links:
-      - ping:ping
-      - speedtest:speedtest
-    networks:
-      - back-tier
+    ports:
+      - "9090:9090"
+    volumes:
+      - $HOME/pp2-mimir/docker/internet-monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - $HOME/pp2-mimir/docker/internet-monitoring/data/prometheus:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
 
   grafana:
-    image: grafana/grafana:latest
-    volumes:
-      - grafana_data:/var/lib/grafana
-      - ./grafana/provisioning/:/etc/grafana/provisioning/
-    depends_on:
-      - prometheus
-    ports:
-      - 3030:3000
+    image: grafana/grafana-oss:latest
+    container_name: internet-grafana
     restart: unless-stopped
+    ports:
+      - "3000:3000"
     env_file:
-      - ./grafana/config.monitoring
-    networks:
-      - back-tier
-      - front-tier
-
-  graphite-exporter:
-    image: prom/graphite-exporter:latest
-    depends_on:
-      - prometheus
-    ports:
-      - 9108:9108
-      - 2003:9109
-      - 2003:9109/udp
-    restart: unless-stopped
-    networks:
-      - back-tier
-
-  ping:
-    tty: true
-    stdin_open: true
-    expose:
-      - 9115
-    ports:
-      - 9115:9115
-    restart: unless-stopped
-    image: prom/blackbox-exporter:latest
+      - $HOME/pp2-mimir/docker/internet-monitoring/grafana/config.monitoring
     volumes:
-      - ./blackbox/config:/config
-    command:
-      - '--config.file=/config/blackbox.yml'
-    networks:
-      - back-tier
+      - $HOME/pp2-mimir/docker/internet-monitoring/data/grafana:/var/lib/grafana
+      - $HOME/pp2-mimir/docker/internet-monitoring/grafana/provisioning:/etc/grafana/provisioning
 
-  speedtest:
-    image: miguelndecarvalho/speedtest-exporter:latest
-    container_name: speedtest-exporter
-    expose:
-      - 9798
-    ports:
-      - 9798:9798
-    restart: unless-stopped
-
-  nodeexp:
-    privileged: true
+  node-exporter:
     image: prom/node-exporter:latest
-    volumes:
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
-      - /:/rootfs:ro
+    container_name: internet-node-exporter
+    restart: unless-stopped
+    pid: host
     ports:
-      - 9100:9100
-    restart: always
+      - "9100:9100"
+    volumes:
+      - /:/host:ro,rslave
     command:
-      - '--path.procfs=/host/proc'
-      - '--path.sysfs=/host/sys'
-      - --collector.filesystem.ignored-mount-points
-      - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
-    networks:
-      - back-tier
+      - '--path.rootfs=/host'
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: internet-cadvisor
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+
+  speedtest-exporter:
+    image: miguelndecarvalho/speedtest-exporter:latest
+    container_name: internet-speedtest-exporter
+    restart: unless-stopped
+    ports:
+      - "9798:9798"
+    environment:
+      - SPEEDTEST_INTERVAL=3600
+
+networks:
+  default:
+    name: internet-monitoring
