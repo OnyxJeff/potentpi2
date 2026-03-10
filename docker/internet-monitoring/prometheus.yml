@@ -18,7 +18,7 @@ scrape_configs:
       - targets:
           - 'cadvisor:8080'
   
-    - job_name: 'speedtest'
+  - job_name: 'speedtest'
     metrics_path: /metrics
     scrape_interval: 15m
     scrape_timeout: 60s

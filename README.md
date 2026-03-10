@@ -193,7 +193,7 @@ docker compose version
 
 ---
 
-### 📝 Installing your first container(s)
+### 📝 Installing your container(s)
 
 - Create/modify your `config.monitoring` environment file
   - navigate to `~/pp2-mimir/docker/internet-monitoring/grafana` and modify the `config.monitoring.example` file with your variables

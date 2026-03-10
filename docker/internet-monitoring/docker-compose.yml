@@ -1,7 +1,7 @@
 services:
 
   prometheus:
-    image: prom/prometheus:latest
+    image: prom/prometheus:v2.51.2
     container_name: internet-prometheus
     restart: unless-stopped
     ports:
@@ -12,9 +12,12 @@ services:
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
       - "--storage.tsdb.path=/prometheus"
+      - "--storage.tsdb.retention.time=30d"
+      - "--storage.tsdb.retention.size=10GB"
+      - "--storage.tsdb.wal-compression"
 
   grafana:
-    image: grafana/grafana-oss:latest
+    image: grafana/grafana-oss:10.4.2
     container_name: internet-grafana
     restart: unless-stopped
     ports:
@@ -26,7 +29,7 @@ services:
       - $HOME/pp2-mimir/docker/internet-monitoring/grafana/provisioning:/etc/grafana/provisioning
 
   node-exporter:
-    image: prom/node-exporter:latest
+    image: prom/node-exporter:v1.8.1
     container_name: internet-node-exporter
     restart: unless-stopped
     pid: host
@@ -38,7 +41,7 @@ services:
       - '--path.rootfs=/host'
 
   cadvisor:
-    image: gcr.io/cadvisor/cadvisor:latest
+    image: ghcr.io/cadvisor/cadvisor:c0.49.1
     container_name: internet-cadvisor
     restart: unless-stopped
     ports:
@@ -50,7 +53,7 @@ services:
       - /var/lib/docker:/var/lib/docker:ro
 
   speedtest-exporter:
-    image: miguelndecarvalho/speedtest-exporter:latest
+    image: miguelndecarvalho/speedtest-exporter:v3.5.4
     container_name: internet-speedtest-exporter
     restart: unless-stopped
     ports:

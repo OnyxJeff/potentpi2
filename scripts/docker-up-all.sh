@@ -6,6 +6,33 @@ set -e  # Exit immediately on any error
 
 DOCKER_BASE="$HOME/pp2-mimir/docker"
 
+echo "=== 🚀 Preparing required directories ==="
+
+# Internet monitoring stack paths
+MONITORING_DIR="$DOCKER_BASE/internet-monitoring"
+PROM_DATA="$MONITORING_DIR/data/prometheus"
+GRAF_DATA="$MONITORING_DIR/data/grafana"
+
+# Create directories if missing
+mkdir -p "$PROM_DATA"
+mkdir -p "$GRAF_DATA"
+
+# Grafana runs as UID 472 inside container
+if command -v sudo >/dev/null 2>&1; then
+sudo chown -R 472:472 "$GRAF_DATA"
+else
+chown -R 472:472 "$GRAF_DATA"
+fi
+
+# Prometheus runs as UID 65534 inside container
+if command -v sudo >/dev/null 2>&1; then
+sudo chown -R 65534:65534 "$PROM_DATA"
+else
+chown -R 65534:65534 "$PROM_DATA"
+fi
+
+echo "✅ Directory preparation complete"
+
 echo "=== 🚀 Auto-starting all Docker Compose stacks under: $DOCKER_BASE ==="
 
 # Find directories containing docker-compose.yml or compose.yml
