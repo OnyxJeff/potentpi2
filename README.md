@@ -195,15 +195,26 @@ docker compose version
 
 ### 📝 Installing your container(s)
 
-- Create/modify your `config.monitoring` environment file
+- Create/modify your environment files
   - navigate to `~/pp2-mimir/docker/internet-monitoring/grafana` and modify the `config.monitoring.example` file with your variables
   ```bash
   nano ~/pp2-mimir/docker/internet-monitoring/grafana/config.monitoring.example
   ```
-
   - `CTRL` + `x` to save and save as `config.monitoring`
 
-- Installing Monitoring Stack (via script)
+  - navigate to `~/pp2-mimir/docker/nginx` and modify the `custom.ini.example` file with your variables
+  ```bash
+  nano ~/pp2-mimir/docker/nginx/custom.ini.example
+  ```
+  - `CTRL` + `x` to save and save as `custom.ini`
+
+  - navigate to `~/pp2-mimir/docker/nginx` and modify the `custom.ini.example` file with your variables
+  ```bash
+  nano ~/pp2-mimir/docker/nginx/custom.ini.example
+  ```
+  - `CTRL` + `x` to save and save as `custom.ini`
+
+- Installing Container Stack (via script)
 ```bash
 cd ~/pp2-mimir/scripts
 chmod +x docker-up-all.sh

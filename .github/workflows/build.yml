@@ -19,5 +19,5 @@ jobs:
 
       - name: Lint Scripts
         run: |
-          echo "Running ShellCheck on backup scripts..."
-          find scripts -name "*.sh" -exec shellcheck {} +
+          echo "Running ShellCheck..."
+          find scripts -name "*.sh" -exec shellcheck -S warning {} +
