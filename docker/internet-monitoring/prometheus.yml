@@ -11,12 +11,12 @@ scrape_configs:
   - job_name: 'prometheus'
     static_configs:
       - targets:
-        - 'svr-mimir.asgard.onyxnet.lan:9090'
+        - 'prometheus:9090'
   
   - job_name: 'cadvisor'
     static_configs:
       - targets:
-        - 'svr-mimir.asgard.onyxnet.lan:8081'
+        - 'cadvisor:8081'
   
   - job_name: 'speedtest'
     metrics_path: /metrics
@@ -24,7 +24,7 @@ scrape_configs:
     scrape_timeout: 60s
     static_configs:
       - targets:
-        - 'svr-mimir.asgard.onyxnet.lan:9798'
+        - 'speedtest-exporter:9798'
 
   - job_name: 'prometheus-router'
     static_configs:

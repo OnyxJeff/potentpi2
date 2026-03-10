@@ -20,7 +20,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 25,
   "links": [],
   "panels": [
     {
@@ -32,8 +31,10 @@
         "defaults": {
           "color": {
             "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
+          "decimals": 1,
+          "fieldMinMax": false,
           "mappings": [
             {
               "options": {
@@ -45,30 +46,38 @@
               "type": "special"
             }
           ],
-          "max": 50,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#299c46"
+                "color": "red",
+                "value": 0
               },
               {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 25
+                "color": "orange",
+                "value": 500000000
               },
               {
-                "color": "#d44a3a",
-                "value": 40
+                "color": "yellow",
+                "value": 650000000
+              },
+              {
+                "color": "green",
+                "value": 750000000
+              },
+              {
+                "color": "blue",
+                "value": 850000000
               }
             ]
           },
-          "unit": "none"
+          "unit": "bps"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 10,
         "w": 6,
         "x": 0,
         "y": 0
@@ -76,7 +85,7 @@
       "id": 8,
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
+        "colorMode": "value",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
@@ -92,15 +101,18 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "datasource": {
             "uid": "prometheus"
           },
-          "expr": "speedtest_bits_per_second{direction=\"downstream\"}",
+          "editorMode": "builder",
+          "expr": "speedtest_download_bits_per_second{job=\"speedtest\"}",
           "format": "time_series",
           "intervalFactor": 1,
+          "legendFormat": "__auto",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -109,14 +121,16 @@
     },
     {
       "datasource": {
-        "uid": "prometheus"
+        "type": "prometheus",
+        "uid": "PAAD2532CB637A21E"
       },
       "fieldConfig": {
         "defaults": {
           "color": {
             "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
+          "decimals": 1,
           "mappings": [
             {
               "options": {
@@ -128,30 +142,38 @@
               "type": "special"
             }
           ],
-          "max": 20,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#299c46"
+                "color": "red",
+                "value": 0
               },
               {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 5
+                "color": "orange",
+                "value": 10000000
               },
               {
-                "color": "#d44a3a",
-                "value": 10
+                "color": "yellow",
+                "value": 20000000
+              },
+              {
+                "color": "green",
+                "value": 30000000
+              },
+              {
+                "color": "blue",
+                "value": 40000000
               }
             ]
           },
-          "unit": "none"
+          "unit": "bps"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 10,
         "w": 6,
         "x": 6,
         "y": 0
@@ -159,7 +181,7 @@
       "id": 10,
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
+        "colorMode": "value",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
@@ -175,15 +197,19 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "datasource": {
-            "uid": "prometheus"
+            "type": "prometheus",
+            "uid": "PAAD2532CB637A21E"
           },
-          "expr": "speedtest_bits_per_second{direction=\"upstream\"}",
+          "editorMode": "builder",
+          "expr": "speedtest_upload_bits_per_second{job=\"speedtest\"}",
           "format": "time_series",
           "intervalFactor": 1,
+          "legendFormat": "__auto",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -192,15 +218,17 @@
     },
     {
       "datasource": {
-        "uid": "prometheus"
+        "type": "prometheus",
+        "uid": "PAAD2532CB637A21E"
       },
       "fieldConfig": {
         "defaults": {
           "color": {
             "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
           "decimals": 2,
+          "fieldMinMax": true,
           "mappings": [
             {
               "options": {
@@ -212,17 +240,29 @@
               "type": "special"
             }
           ],
-          "max": 100,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "blue",
+                "value": 0
+              },
+              {
+                "color": "green",
+                "value": 5
+              },
+              {
+                "color": "yellow",
+                "value": 10
+              },
+              {
+                "color": "orange",
+                "value": 30
               },
               {
                 "color": "red",
-                "value": 80
+                "value": 50
               }
             ]
           },
@@ -231,15 +271,15 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
-        "w": 12,
+        "h": 5,
+        "w": 4,
         "x": 12,
         "y": 0
       },
-      "id": 12,
+      "id": 13,
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
+        "colorMode": "value",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
@@ -255,24 +295,29 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "datasource": {
-            "uid": "prometheus"
+            "type": "prometheus",
+            "uid": "PAAD2532CB637A21E"
           },
-          "expr": "speedtest_ping",
+          "editorMode": "builder",
+          "expr": "speedtest_jitter_latency_milliseconds{job=\"speedtest\"}",
           "format": "time_series",
           "intervalFactor": 1,
+          "legendFormat": "__auto",
+          "range": true,
           "refId": "A"
         }
       ],
-      "title": "speedtest ping",
+      "title": "Speedtest Jitter",
       "type": "stat"
     },
     {
       "datasource": {
-        "uid": "prometheus"
+        "type": "prometheus",
+        "uid": "PAAD2532CB637A21E"
       },
       "fieldConfig": {
         "defaults": {
@@ -303,6 +348,7 @@
               "type": "linear"
             },
             "showPoints": "never",
+            "showValues": false,
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -312,12 +358,15 @@
               "mode": "off"
             }
           },
+          "fieldMinMax": false,
           "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               },
               {
                 "color": "red",
@@ -325,15 +374,15 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "bps"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 0,
-        "y": 9
+        "h": 10,
+        "w": 8,
+        "x": 16,
+        "y": 0
       },
       "id": 6,
       "options": {
@@ -349,92 +398,138 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "datasource": {
-            "uid": "prometheus"
+            "type": "prometheus",
+            "uid": "PAAD2532CB637A21E"
           },
-          "expr": "speedtest_bits_per_second{}",
+          "editorMode": "builder",
+          "expr": "speedtest_download_bits_per_second{job=\"speedtest\"}",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{direction}}",
-          "refId": "A"
+          "legendFormat": "Download",
+          "range": true,
+          "refId": "Download"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAAD2532CB637A21E"
+          },
+          "editorMode": "builder",
+          "expr": "speedtest_upload_bits_per_second{job=\"speedtest\"}",
+          "instant": false,
+          "legendFormat": "Upload",
+          "range": true,
+          "refId": "Upload"
         }
       ],
-      "title": "speedtest",
+      "title": "Speedtest",
       "type": "timeseries"
     },
     {
       "datasource": {
-        "uid": "prometheus"
+        "type": "prometheus",
+        "uid": "PAAD2532CB637A21E"
       },
       "fieldConfig": {
-        "defaults": {},
+        "defaults": {
+          "color": {
+            "fixedColor": "rgb(31, 120, 193)",
+            "mode": "thresholds"
+          },
+          "decimals": 2,
+          "fieldMinMax": true,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": 0
+              },
+              {
+                "color": "green",
+                "value": 25
+              },
+              {
+                "color": "yellow",
+                "value": 50
+              },
+              {
+                "color": "orange",
+                "value": 100
+              },
+              {
+                "color": "red",
+                "value": 150
+              }
+            ]
+          },
+          "unit": "ms"
+        },
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
-        "w": 12,
+        "h": 5,
+        "w": 4,
         "x": 12,
-        "y": 9
+        "y": 5
       },
-      "id": 14,
-      "options": {},
-      "pluginVersion": "12.0.2",
+      "id": 12,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "datasource": {
-            "uid": "prometheus"
+            "type": "prometheus",
+            "uid": "PAAD2532CB637A21E"
           },
-          "expr": "probe_success",
+          "editorMode": "builder",
+          "expr": "speedtest_ping_latency_milliseconds{job=\"speedtest\"}",
           "format": "time_series",
-          "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "__auto",
+          "range": true,
           "refId": "A"
         }
       ],
-      "title": "Panel Title",
-      "type": "flant-statusmap-panel"
-    },
-    {
-      "datasource": {
-        "uid": "prometheus"
-      },
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 24,
-        "x": 0,
-        "y": 18
-      },
-      "id": 4,
-      "maxPerRow": 12,
-      "options": {},
-      "repeat": "host",
-      "repeatDirection": "h",
-      "targets": [
-        {
-          "datasource": {
-            "uid": "prometheus"
-          },
-          "expr": "sum(probe_http_duration_seconds) by (instance)",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "{{instance}}",
-          "refId": "A"
-        }
-      ],
-      "title": "http duration",
-      "type": "timeseries"
+      "title": "Speedtest Ping",
+      "type": "stat"
     }
   ],
   "preload": false,
-  "schemaVersion": 41,
+  "schemaVersion": 42,
   "tags": [
     "speedtest",
     "ping"
@@ -450,5 +545,6 @@
   "timezone": "browser",
   "title": "internet connection",
   "uid": "o9mIe_Aik",
-  "version": 1
+  "version": 1,
+  "weekStart": ""
 }
