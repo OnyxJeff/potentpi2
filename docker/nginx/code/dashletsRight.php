@@ -8,7 +8,7 @@
 $dl = array
 (
     'dashlet1' => array(
-        'url' => 'http://svr-mimir.onyxnet.lan:3030/d/o9mIe_Aik/internet-connection?kiosk&autofitpanels&orgId=1&refresh=auto',
+        'url' => 'http://svr-mimir.onyxnet.lan:3000/d/o9mIe_Aik/internet-connection?kiosk&autofitpanels&orgId=1&refresh=auto',
         'height' => '700',
         'width' => '100%'
     )
