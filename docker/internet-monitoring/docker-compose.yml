@@ -61,6 +61,19 @@ services:
     environment:
       - SPEEDTEST_INTERVAL=3600
 
+  graphite:
+    image: graphiteapp/graphite-statsd:latest
+    container_name: internet-graphite
+    restart: unless-stopped
+    ports:
+      - "8082:80"       # Graphite Web UI
+      - "2003-2004:2003-2004"  # Carbon TCP
+      - "2023-2024:2023-2024"  # Carbon UDP
+      - "8125:8125/udp"  # StatsD UDP
+      - "8126:8126"      # StatsD Admin
+    volumes:
+      - $HOME/pp2-mimir/docker/internet-monitoring/data/graphite:/opt/graphite/storage
+
 networks:
   default:
     name: internet-monitoring

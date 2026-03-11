@@ -18,7 +18,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 17,
   "links": [],
   "panels": [
     {
@@ -37,7 +36,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue"
+                "color": "blue",
+                "value": 0
               },
               {
                 "color": "green",
@@ -57,7 +57,7 @@
               }
             ]
           },
-          "unit": "none"
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -85,7 +85,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "disableTextWrap": false,
@@ -117,7 +117,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue"
+                "color": "blue",
+                "value": 0
               },
               {
                 "color": "green",
@@ -163,7 +164,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "disableTextWrap": false,
@@ -195,7 +196,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue"
+                "color": "blue",
+                "value": 0
               },
               {
                 "color": "green",
@@ -214,7 +216,8 @@
                 "value": 50
               }
             ]
-          }
+          },
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -242,7 +245,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "disableTextWrap": false,
@@ -274,7 +277,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue"
+                "color": "blue",
+                "value": 0
               },
               {
                 "color": "green",
@@ -293,7 +297,8 @@
                 "value": 50
               }
             ]
-          }
+          },
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -321,7 +326,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "disableTextWrap": false,
@@ -353,7 +358,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               },
               {
                 "color": "red",
@@ -389,11 +395,11 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "editorMode": "code",
-          "expr": "pihole_request_rate{instance=\"svr-odin.asgard.onyxnet.lan:9617\"}",
+          "expr": "rate(pihole_dns_queries_all_types{instance=\"svr-odin.asgard.onyxnet.lan:9617\"}[1m])",
           "legendFormat": "Request Rate (queries/sec)",
           "range": true,
           "refId": "Request Rate (queries/sec)"
@@ -436,6 +442,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
+            "showValues": false,
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -450,14 +457,16 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -481,7 +490,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "datasource": {
@@ -536,6 +545,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
+            "showValues": false,
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -550,14 +560,16 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -581,7 +593,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "disableTextWrap": false,
@@ -603,7 +615,6 @@
           "editorMode": "builder",
           "expr": "pihole_queries_forwarded{instance=\"svr-odin.asgard.onyxnet.lan:9617\"}",
           "fullMetaSearch": false,
-          "hide": false,
           "includeNullMetadata": true,
           "instant": false,
           "legendFormat": "Queries Forwarded",
@@ -645,7 +656,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               },
               {
                 "color": "red",
@@ -680,7 +692,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "disableTextWrap": false,
@@ -731,13 +743,13 @@
           "decimals": 1,
           "fieldMinMax": false,
           "mappings": [],
-          "max": 1.5,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue"
+                "color": "blue",
+                "value": 0
               },
               {
                 "color": "green",
@@ -757,7 +769,7 @@
               }
             ]
           },
-          "unit": "ms"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -791,16 +803,15 @@
         "xTickLabelRotation": -45,
         "xTickLabelSpacing": 200
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "disableTextWrap": false,
           "editorMode": "code",
           "exemplar": false,
-          "expr": "pihole_forward_destinations_responsetime{destination=\"10.100.0.1\", instance=\"svr-odin.asgard.onyxnet.lan:9617\"}",
+          "expr": "pihole_forward_destinations_responsetime{destination=\"10.100.0.1#53\", instance=\"svr-odin.asgard.onyxnet.lan:9617\"}",
           "format": "time_series",
           "fullMetaSearch": false,
-          "hide": false,
           "includeNullMetadata": true,
           "instant": false,
           "legendFormat": "Unbound DNS",
@@ -817,7 +828,6 @@
           "editorMode": "code",
           "expr": "pihole_forward_destinations_responsetime{destination=\"blocklist\", instance=\"svr-odin.asgard.onyxnet.lan:9617\"}",
           "fullMetaSearch": false,
-          "hide": false,
           "includeNullMetadata": true,
           "instant": false,
           "legendFormat": "Blocklist",
@@ -834,7 +844,6 @@
           "editorMode": "code",
           "expr": "pihole_forward_destinations_responsetime{destination=\"cache\", instance=\"svr-odin.asgard.onyxnet.lan:9617\"}",
           "fullMetaSearch": false,
-          "hide": false,
           "includeNullMetadata": true,
           "instant": false,
           "legendFormat": "Cache",
@@ -880,6 +889,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
+            "showValues": false,
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -894,14 +904,16 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "s"
         },
         "overrides": []
       },
@@ -925,12 +937,12 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "pihole_forward_destinations_responsevariance{destination=\"10.100.0.1\", instance=\"svr-odin.asgard.onyxnet.lan:9617\"}",
+          "expr": "pihole_forward_destinations_responsevariance{destination=\"10.100.0.1#53\", instance=\"svr-odin.asgard.onyxnet.lan:9617\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "Unbound DNS",
@@ -945,7 +957,6 @@
           },
           "editorMode": "code",
           "expr": "pihole_forward_destinations_responsevariance{destination=\"blocklist\", instance=\"svr-odin.asgard.onyxnet.lan:9617\"}",
-          "hide": false,
           "instant": false,
           "legendFormat": "Blocklist",
           "range": true,
@@ -958,7 +969,6 @@
           },
           "editorMode": "code",
           "expr": "pihole_forward_destinations_responsevariance{destination=\"cache\", instance=\"svr-odin.asgard.onyxnet.lan:9617\"}",
-          "hide": false,
           "instant": false,
           "legendFormat": "Cache",
           "range": true,
@@ -985,7 +995,8 @@
               "viz": false
             }
           },
-          "mappings": []
+          "mappings": [],
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -1010,19 +1021,20 @@
           "fields": "",
           "values": false
         },
+        "sort": "desc",
         "tooltip": {
           "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "disableTextWrap": false,
           "editorMode": "code",
           "exemplar": false,
-          "expr": "pihole_forward_destinations{destination=\"10.100.0.1\", instance=\"svr-odin.asgard.onyxnet.lan:9617\"}",
+          "expr": "pihole_forward_destinations{destination=\"10.100.0.1#53\", instance=\"svr-odin.asgard.onyxnet.lan:9617\"}",
           "format": "time_series",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
@@ -1041,7 +1053,6 @@
           "editorMode": "builder",
           "expr": "pihole_forward_destinations{destination=\"blocklist\", instance=\"svr-odin.asgard.onyxnet.lan:9617\"}",
           "fullMetaSearch": false,
-          "hide": false,
           "includeNullMetadata": true,
           "instant": false,
           "legendFormat": "Blocklist",
@@ -1058,7 +1069,6 @@
           "editorMode": "builder",
           "expr": "pihole_forward_destinations{destination=\"cache\", instance=\"svr-odin.asgard.onyxnet.lan:9617\"}",
           "fullMetaSearch": false,
-          "hide": false,
           "includeNullMetadata": true,
           "instant": false,
           "legendFormat": "Cache",
@@ -1085,7 +1095,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue"
+                "color": "blue",
+                "value": 0
               },
               {
                 "color": "green",
@@ -1104,7 +1115,8 @@
                 "value": 35000
               }
             ]
-          }
+          },
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -1132,7 +1144,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "disableTextWrap": false,
@@ -1183,6 +1195,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
+            "showValues": false,
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -1197,7 +1210,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               },
               {
                 "color": "red",
@@ -1205,7 +1219,7 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -1229,7 +1243,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "disableTextWrap": false,
@@ -1248,7 +1262,7 @@
     }
   ],
   "preload": false,
-  "schemaVersion": 41,
+  "schemaVersion": 42,
   "tags": [],
   "templating": {
     "list": []
@@ -1261,5 +1275,6 @@
   "timezone": "browser",
   "title": "Pi-hole Ad-Blocking Stats",
   "uid": "0d38f17f-ae7a-4d8f-a639-aa42de772e51",
-  "version": 7
+  "version": 2,
+  "weekStart": ""
 }
