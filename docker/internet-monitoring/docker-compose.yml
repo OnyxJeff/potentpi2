@@ -56,10 +56,11 @@ services:
     image: ghcr.io/miguelndecarvalho/speedtest-exporter:latest
     container_name: internet-speedtest-exporter
     restart: unless-stopped
+    environment:
+      - SPEEDTEST_SERVER=68386
+      - SPEEDTEST_INTERVAL=3600
     ports:
       - "9798:9798"
-    environment:
-      - SPEEDTEST_INTERVAL=3600
 
   graphite:
     image: graphiteapp/graphite-statsd:latest
