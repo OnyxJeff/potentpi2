@@ -214,6 +214,20 @@ docker compose version
   ```
   - `CTRL` + `x` to save and save as `site.conf`
 
+  - navigate to `~/pp2-mimir/docker/nginx/code` and modify the `config.ini.example` file with your variables as well as `bookmarks.dat.example`. Even if you don't add any bookmarks you still need to rename otherwise you will receive an error when you first display your static site.
+  
+    - ```bash
+      nano ~/pp2-mimir/docker/nginx/code/config.ini.example
+      ```
+    
+    - `CTRL` + `x` to save and save as `config.ini`
+
+    - ```bash
+      nano ~/pp2-mimir/docker/nginx/code/bookmarks.dat.example
+      ```
+    
+    - `CTRL` + `x` to save and save as `bookmarks.dat`
+
 - Installing Container Stack (via script)
 ```bash
 cd ~/pp2-mimir/scripts
