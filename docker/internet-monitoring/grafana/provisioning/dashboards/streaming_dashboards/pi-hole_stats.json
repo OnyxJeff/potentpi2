@@ -1262,19 +1262,20 @@
     }
   ],
   "preload": false,
+  "refresh": "auto",
   "schemaVersion": 42,
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-12h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "Pi-hole Ad-Blocking Stats",
   "uid": "0d38f17f-ae7a-4d8f-a639-aa42de772e51",
-  "version": 2,
+  "version": 1,
   "weekStart": ""
 }

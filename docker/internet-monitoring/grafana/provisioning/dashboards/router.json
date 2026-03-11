@@ -19,7 +19,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 8,
   "links": [],
   "panels": [
     {
@@ -40,7 +39,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue"
+                "color": "blue",
+                "value": 0
               },
               {
                 "color": "green",
@@ -84,73 +84,65 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P480862F8F3B2C505"
+            "uid": "PAAD2532CB637A21E"
           },
           "editorMode": "code",
-          "expr": "100 * (1 - avg(irate(node_cpu_seconds_total{job=\"prometheus-router\",mode=\"idle\"}[5m])) by (instance))",
+          "expr": "100 - (avg by(instance) (rate(node_cpu_seconds_total{job=\"prometheus-router\",mode=\"idle\"}[5m])) * 100)",
           "instant": false,
-          "legendFormat": "CPU Usage (%)",
+          "legendFormat": "CPU Usage",
           "range": true,
           "refId": "CPU Usage"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P480862F8F3B2C505"
+            "uid": "PAAD2532CB637A21E"
           },
           "editorMode": "code",
-          "expr": "100 * (node_memory_size_bytes{job=\"prometheus-router\"} - (node_memory_free_bytes{job=\"prometheus-router\"} + node_memory_buffer_bytes{job=\"prometheus-router\"} + node_memory_cache_bytes{job=\"prometheus-router\"} + node_memory_inactive_bytes{job=\"prometheus-router\"} + node_memory_laundry_bytes{job=\"prometheus-router\"})) / node_memory_size_bytes{job=\"prometheus-router\"}",
-          "hide": false,
+          "expr": "(1 - (node_memory_free_bytes{job=\"prometheus-router\"} / node_memory_size_bytes{job=\"prometheus-router\"})) * 100",
           "instant": false,
-          "legendFormat": "MEM Usage (%)",
+          "legendFormat": "MEM Usage",
           "range": true,
           "refId": "MEM Usage"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P480862F8F3B2C505"
+            "uid": "PAAD2532CB637A21E"
           },
           "editorMode": "code",
-          "expr": "100 * (node_filesystem_size_bytes{job=\"prometheus-router\",mountpoint=\"/\"} - node_filesystem_free_bytes{job=\"prometheus-router\",mountpoint=\"/\"}) / node_filesystem_size_bytes{job=\"prometheus-router\",mountpoint=\"/\"}",
-          "hide": false,
+          "expr": "(1 - (node_filesystem_avail_bytes{mountpoint=\"/\",job=\"prometheus-router\"} / node_filesystem_size_bytes{mountpoint=\"/\",job=\"prometheus-router\"})) * 100",
           "instant": false,
-          "legendFormat": "Disk Usage (%)",
+          "legendFormat": "Disk Usage",
           "range": true,
           "refId": "Disk Usage"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P480862F8F3B2C505"
+            "uid": "PAAD2532CB637A21E"
           },
-          "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "100 * (irate(node_network_receive_bytes_total{job=\"prometheus-router\",device=\"re0\"}[10m]) * 8) / 1000000000",
-          "fullMetaSearch": false,
-          "hide": false,
-          "includeNullMetadata": true,
+          "expr": "(rate(node_network_receive_bytes_total{job=\"prometheus-router\",device=\"re0\"}[5m]) * 8) / 1000000000 * 100",
           "instant": false,
-          "legendFormat": "Incoming Network Utilization (1Gb Link)",
+          "legendFormat": "Network Utilization (Incoming)",
           "range": true,
-          "refId": "Network Utilization (Incoming)",
-          "useBackend": false
+          "refId": "Network Utilization (Incoming)"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P480862F8F3B2C505"
+            "uid": "PAAD2532CB637A21E"
           },
           "editorMode": "code",
-          "expr": "100 * (irate(node_network_transmit_bytes_total{job=\"prometheus-router\",device=\"re0\"}[1m]) * 8) / 1000000000",
-          "hide": false,
+          "expr": "(rate(node_network_transmit_bytes_total{job=\"prometheus-router\",device=\"re1\"}[5m]) * 8) / 1000000000 * 100",
           "instant": false,
-          "legendFormat": "Outgoing Network Utilization (1Gb Link)",
+          "legendFormat": "Network Utilization (Outgoing)",
           "range": true,
           "refId": "Network Utilization (Outgoing)"
         }
@@ -177,8 +169,6 @@
             }
           },
           "mappings": [],
-          "max": 8589934592,
-          "min": 0,
           "unit": "decbytes"
         },
         "overrides": [
@@ -238,39 +228,39 @@
           "fields": "",
           "values": false
         },
+        "sort": "desc",
         "tooltip": {
           "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P480862F8F3B2C505"
+            "uid": "PAAD2532CB637A21E"
           },
           "editorMode": "code",
-          "expr": "node_memory_size_bytes{job=\"prometheus-router\"} - (node_memory_free_bytes{job=\"prometheus-router\"} + node_memory_buffer_bytes{job=\"prometheus-router\"} + node_memory_cache_bytes{job=\"prometheus-router\"} + node_memory_inactive_bytes{job=\"prometheus-router\"} + node_memory_laundry_bytes{job=\"prometheus-router\"})\r\n",
-          "hide": false,
+          "expr": "node_memory_size_bytes{job=\"prometheus-router\"} - node_memory_free_bytes{job=\"prometheus-router\"}",
+          "format": "time_series",
           "instant": false,
-          "legendFormat": "Memory Used",
+          "legendFormat": "Used",
           "range": true,
-          "refId": "Memory Used"
+          "refId": "Used"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P480862F8F3B2C505"
+            "uid": "PAAD2532CB637A21E"
           },
           "editorMode": "code",
-          "expr": "node_memory_free_bytes{job=\"prometheus-router\"}",
-          "hide": false,
+          "expr": "node_memory_size_bytes{job=\"prometheus-router\"} - (node_memory_size_bytes{job=\"prometheus-router\"} - node_memory_free_bytes{job=\"prometheus-router\"})",
           "instant": false,
-          "legendFormat": "Memory Free",
+          "legendFormat": "Available",
           "range": true,
-          "refId": "Memory Free"
+          "refId": "Available"
         }
       ],
       "title": "MEM Usage",
@@ -287,12 +277,14 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 2,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               },
               {
                 "color": "red",
@@ -327,58 +319,43 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P480862F8F3B2C505"
+            "uid": "PAAD2532CB637A21E"
           },
-          "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "expr": "node_load1{job=\"prometheus-router\"}",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
           "instant": false,
-          "legendFormat": "Load over 1 minute",
+          "legendFormat": "Load Avererage (1min)",
           "range": true,
-          "refId": "Load Avererage (1min)",
-          "useBackend": false
+          "refId": "Load Avererage (1min)"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P480862F8F3B2C505"
+            "uid": "PAAD2532CB637A21E"
           },
-          "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "expr": "node_load5{job=\"prometheus-router\"}",
-          "fullMetaSearch": false,
-          "hide": false,
-          "includeNullMetadata": true,
           "instant": false,
-          "legendFormat": "Load over 5 minutes",
+          "legendFormat": "Load Average (5min)",
           "range": true,
-          "refId": "Load Average (5min)",
-          "useBackend": false
+          "refId": "Load Average (5min)"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P480862F8F3B2C505"
+            "uid": "PAAD2532CB637A21E"
           },
-          "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "expr": "node_load15{job=\"prometheus-router\"}",
-          "fullMetaSearch": false,
-          "hide": false,
-          "includeNullMetadata": true,
           "instant": false,
-          "interval": "",
-          "legendFormat": "Load over 15 minutes",
+          "legendFormat": "Load Average (15min)",
           "range": true,
-          "refId": "Load Average (15min)",
-          "useBackend": false
+          "refId": "Load Average (15min)"
         }
       ],
       "title": "",
@@ -400,7 +377,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               }
             ]
           },
@@ -432,15 +410,16 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P480862F8F3B2C505"
+            "uid": "PAAD2532CB637A21E"
           },
           "editorMode": "code",
           "expr": "time() - node_boot_time_seconds{job=\"prometheus-router\"}",
+          "instant": false,
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -484,6 +463,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
+            "showValues": false,
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -494,13 +474,13 @@
             }
           },
           "mappings": [],
-          "max": 1000000000,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
               {
-                "color": "blue"
+                "color": "blue",
+                "value": 0
               },
               {
                 "color": "green",
@@ -540,16 +520,15 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P480862F8F3B2C505"
+            "uid": "PAAD2532CB637A21E"
           },
           "editorMode": "code",
-          "expr": "irate(node_network_receive_bytes_total{job=\"prometheus-router\",device=\"re1.10\"}[1m]) * 8",
-          "hide": false,
+          "expr": "irate(node_network_receive_bytes_total{job=\"prometheus-router\", device=\"re1.10\"}[1m]) * 8",
           "instant": false,
           "legendFormat": "Incoming (VLAN 10)",
           "range": true,
@@ -558,11 +537,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P480862F8F3B2C505"
+            "uid": "PAAD2532CB637A21E"
           },
           "editorMode": "code",
-          "expr": "irate(node_network_receive_bytes_total{job=\"prometheus-router\",device=\"re1.25\"}[1m]) * 8",
-          "hide": false,
+          "expr": "irate(node_network_receive_bytes_total{job=\"prometheus-router\", device=\"re1.25\"}[1m]) * 8",
           "instant": false,
           "legendFormat": "Incoming (VLAN 25)",
           "range": true,
@@ -571,11 +549,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P480862F8F3B2C505"
+            "uid": "PAAD2532CB637A21E"
           },
           "editorMode": "code",
-          "expr": "irate(node_network_receive_bytes_total{job=\"prometheus-router\",device=\"re1.50\"}[1m]) * 8",
-          "hide": false,
+          "expr": "irate(node_network_receive_bytes_total{job=\"prometheus-router\", device=\"re1.50\"}[1m]) * 8",
           "instant": false,
           "legendFormat": "Incoming (VLAN 50)",
           "range": true,
@@ -584,11 +561,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P480862F8F3B2C505"
+            "uid": "PAAD2532CB637A21E"
           },
           "editorMode": "code",
-          "expr": "irate(node_network_receive_bytes_total{job=\"prometheus-router\",device=\"re1.99\"}[1m]) * 8",
-          "hide": false,
+          "expr": "irate(node_network_receive_bytes_total{job=\"prometheus-router\", device=\"re1.99\"}[1m]) * 8",
           "instant": false,
           "legendFormat": "Incoming (VLAN 99)",
           "range": true,
@@ -597,11 +573,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P480862F8F3B2C505"
+            "uid": "PAAD2532CB637A21E"
           },
           "editorMode": "code",
-          "expr": "irate(node_network_receive_bytes_total{job=\"prometheus-router\",device=\"re1.100\"}[1m]) * 8",
-          "hide": false,
+          "expr": "irate(node_network_receive_bytes_total{job=\"prometheus-router\", device=\"re1.100\"}[1m]) * 8",
           "instant": false,
           "legendFormat": "Incoming (VLAN 100)",
           "range": true,
@@ -610,11 +585,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P480862F8F3B2C505"
+            "uid": "PAAD2532CB637A21E"
           },
           "editorMode": "code",
-          "expr": "irate(node_network_receive_bytes_total{job=\"prometheus-router\",device=\"re1.1000\"}[1m]) * 8",
-          "hide": false,
+          "expr": "irate(node_network_receive_bytes_total{job=\"prometheus-router\", device=\"re1.1000\"}[1m]) * 8",
           "instant": false,
           "legendFormat": "Incoming (VLAN 1000)",
           "range": true,
@@ -659,6 +633,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
+            "showValues": false,
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -675,7 +650,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue"
+                "color": "blue",
+                "value": 0
               }
             ]
           },
@@ -703,33 +679,29 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P480862F8F3B2C505"
+            "uid": "PAAD2532CB637A21E"
           },
-          "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "irate(node_network_receive_bytes_total{job=\"prometheus-router\",device=\"re0\"}[1m]) * 8",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
-          "legendFormat": "Incoming (WAN)",
+          "expr": "irate(node_network_receive_bytes_total{job=\"prometheus-router\", device=\"re0\"}[1m]) * 8",
+          "instant": false,
+          "legendFormat": "Incoming Bandwidth (WAN)",
           "range": true,
-          "refId": "Incoming Bandwidth (WAN)",
-          "useBackend": false
+          "refId": "Incoming Bandwidth (WAN)"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P480862F8F3B2C505"
+            "uid": "PAAD2532CB637A21E"
           },
           "editorMode": "code",
-          "expr": "(irate(node_network_transmit_bytes_total{job=\"prometheus-router\",device=\"re0\"}[1m]) * 8) * -1",
-          "hide": false,
+          "expr": "irate(node_network_transmit_bytes_total{job=\"prometheus-router\", device=\"re1\"}[1m]) * 8",
           "instant": false,
-          "legendFormat": "Outgoing (WAN)",
+          "legendFormat": "Outgoing Bandwidth (WAN)",
           "range": true,
           "refId": "Outgoing Bandwidth (WAN)"
         }
@@ -772,6 +744,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
+            "showValues": false,
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -782,13 +755,13 @@
             }
           },
           "mappings": [],
-          "max": 1000000000,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
               {
-                "color": "blue"
+                "color": "blue",
+                "value": 0
               },
               {
                 "color": "green",
@@ -828,7 +801,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.0.2",
+      "pluginVersion": "12.4.1",
       "targets": [
         {
           "editorMode": "code",
@@ -844,7 +817,6 @@
           },
           "editorMode": "code",
           "expr": "irate(node_network_transmit_bytes_total{job=\"prometheus-router\",device=\"re1.25\"}[1m]) * 8",
-          "hide": false,
           "instant": false,
           "legendFormat": "Outgoing (VLAN 25)",
           "range": true,
@@ -857,7 +829,6 @@
           },
           "editorMode": "code",
           "expr": "irate(node_network_transmit_bytes_total{job=\"prometheus-router\",device=\"re1.50\"}[1m]) * 8",
-          "hide": false,
           "instant": false,
           "legendFormat": "Outgoing (VLAN 50)",
           "range": true,
@@ -870,7 +841,6 @@
           },
           "editorMode": "code",
           "expr": "irate(node_network_transmit_bytes_total{job=\"prometheus-router\",device=\"re1.99\"}[1m]) * 8",
-          "hide": false,
           "instant": false,
           "legendFormat": "Outgoing (VLAN 99)",
           "range": true,
@@ -883,7 +853,6 @@
           },
           "editorMode": "code",
           "expr": "irate(node_network_transmit_bytes_total{job=\"prometheus-router\",device=\"re1.100\"}[1m]) * 8",
-          "hide": false,
           "instant": false,
           "legendFormat": "Outgoing (VLAN 100)",
           "range": true,
@@ -896,7 +865,6 @@
           },
           "editorMode": "code",
           "expr": "irate(node_network_transmit_bytes_total{job=\"prometheus-router\",device=\"re1.1000\"}[1m]) * 8",
-          "hide": false,
           "instant": false,
           "legendFormat": "Outgoing (VLAN 1000)",
           "range": true,
@@ -909,7 +877,8 @@
     }
   ],
   "preload": false,
-  "schemaVersion": 41,
+  "refresh": "auto",
+  "schemaVersion": 42,
   "tags": [
     "System Performance",
     "Traffic Analysis",
@@ -927,12 +896,13 @@
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-12h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "PfSense Router",
   "uid": "ce6mc1th1do1sa",
-  "version": 1
+  "version": 2,
+  "weekStart": ""
 }
