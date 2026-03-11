@@ -208,11 +208,11 @@ docker compose version
   ```
   - `CTRL` + `x` to save and save as `custom.ini`
 
-  - navigate to `~/pp2-mimir/docker/nginx` and modify the `custom.ini.example` file with your variables
+  - navigate to `~/pp2-mimir/docker/nginx` and modify the `site.conf` and enter your server name
   ```bash
-  nano ~/pp2-mimir/docker/nginx/custom.ini.example
+  nano ~/pp2-mimir/docker/nginx/site.conf
   ```
-  - `CTRL` + `x` to save and save as `custom.ini`
+  - `CTRL` + `x` to save and save as `site.conf`
 
 - Installing Container Stack (via script)
 ```bash
