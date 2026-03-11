@@ -53,7 +53,7 @@ services:
       - /var/lib/docker:/var/lib/docker:ro
 
   speedtest-exporter:
-    image: miguelndecarvalho/speedtest-exporter:latest
+    image: ghcr.io/miguelndecarvalho/speedtest-exporter:latest
     container_name: internet-speedtest-exporter
     restart: unless-stopped
     ports:
