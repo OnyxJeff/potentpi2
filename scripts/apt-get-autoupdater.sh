@@ -29,11 +29,7 @@ if [[ $? -ne 0 ]]; then
     exit 1
 fi
 
-# Step 2: fix broken dependencies
-echo "[$NOW] Running apt-get --fix-broken install..." >> "$LOG_FILE"
-sudo apt-get --fix-broken install -y >> "$LOG_FILE" 2>&1
-
-# Step 3: upgrade packages
+# Step 2: upgrade packages
 echo "[$NOW] Running apt-get upgrade..." >> "$LOG_FILE"
 sudo apt-get upgrade -y >> "$LOG_FILE" 2>&1
 if [[ $? -ne 0 ]]; then
@@ -41,15 +37,15 @@ if [[ $? -ne 0 ]]; then
     exit 1
 fi
 
-# Step 4: autoremove
+# Step 3: autoremove
 echo "[$NOW] Running apt-get autoremove..." >> "$LOG_FILE"
 sudo apt-get autoremove -y >> "$LOG_FILE" 2>&1
 
-# Step 5: clean
+# Step 4: clean
 echo "[$NOW] Running apt-get clean..." >> "$LOG_FILE"
 sudo apt-get clean >> "$LOG_FILE" 2>&1
 
-# Step 6: autoclean
+# Step 5: autoclean
 echo "[$NOW] Running apt-get autoclean..." >> "$LOG_FILE"
 sudo apt-get autoclean >> "$LOG_FILE" 2>&1
 
