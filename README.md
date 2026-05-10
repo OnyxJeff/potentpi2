@@ -28,9 +28,7 @@ pp2-mimir/
 
   - **Grafana**: Visualizes metrics and analytics through customizable dashboards.
   - **UniFi Controller**: Manages UniFi network devices and monitors network performance.
-  - **Uptime Kuma**: Monitors website and service uptime with alerts on failures.
   - **Ookla Internet SpeedTest**: Measures and logs internet connection speed and latency.
-  - **Static-Site Generator (NGinx)**: Serves pre-built static websites via a lightweight web server.
 
 ---
 
@@ -202,32 +200,6 @@ docker compose version
   ```
   - `CTRL` + `x` to save and save as `config.monitoring`
 
-  - navigate to `~/pp2-mimir/docker/nginx` and modify the `custom.ini.example` file with your variables
-  ```bash
-  nano ~/pp2-mimir/docker/nginx/custom.ini.example
-  ```
-  - `CTRL` + `x` to save and save as `custom.ini`
-
-  - navigate to `~/pp2-mimir/docker/nginx` and modify the `site.conf` and enter your server name
-  ```bash
-  nano ~/pp2-mimir/docker/nginx/site.conf
-  ```
-  - `CTRL` + `x` to save and save as `site.conf`
-
-  - navigate to `~/pp2-mimir/docker/nginx/code` and modify the `config.ini.example` file with your variables as well as `bookmarks.dat.example`. Even if you don't add any bookmarks you still need to rename otherwise you will receive an error when you first display your static site.
-  
-    - ```bash
-      nano ~/pp2-mimir/docker/nginx/code/config.ini.example
-      ```
-    
-    - `CTRL` + `x` to save and save as `config.ini`
-
-    - ```bash
-      nano ~/pp2-mimir/docker/nginx/code/bookmarks.dat.example
-      ```
-    
-    - `CTRL` + `x` to save and save as `bookmarks.dat`
-
 - Installing Container Stack (via script)
 ```bash
 cd ~/pp2-mimir/scripts
@@ -244,7 +216,6 @@ This project uses or is inspired by the following repositories:
 - [U6143_ssd1306](https://github.com/UCTRONICS/U6143_ssd1306) – Provides the C display code used in the systemd service setup.
 - [UniFi-RPi](https://github.com/ryansch/docker-unifi-rpi) - UniFi Controller for Raspberry Pi.
 - [Internet Monitoring](https://github.com/tb942/internet-monitoring) – Used as insiration for Docker-based Prometheus monitoring and metrics collection as well as Ookla Speedtest.
-- [Uptime-Kuma](https://github.com/louislam/uptime-kuma) - Uptime Kuma visual server monitoring.
 
 ---
 
