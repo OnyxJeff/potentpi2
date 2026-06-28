@@ -1,9 +1,9 @@
 #!/bin/bash 
 # Run docker compose up -d in all docker project folders automatically 
-# For pp2-Mimir 
+# For potentpi2 
 set -e # Exit immediately on any error 
 
-DOCKER_BASE="$HOME/pp2-mimir"
+DOCKER_BASE="$HOME/potentpi2"
 
 echo "=== 🚀 Auto-starting all Docker Compose stacks under: $DOCKER_BASE ===" 
 
