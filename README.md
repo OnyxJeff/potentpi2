@@ -77,6 +77,12 @@ sudo ./setup_display_service.sh
 
 ## ⚠️ Updating the OS
 
+- Make the log folder for updates
+```bash
+mkdir ~/pp2-mimir/logs
+mkdir ~/pp2-mimir/backup_logs
+```
+
 - Update and Upgrade the System via script:
 ```bash
 cd ~/pp2-mimir/scripts
