@@ -16,22 +16,3 @@ services:
     network_mode: host
     labels:
       org.label-schema.group: "monitoring"
-
-  cadvisor:
-    image: gcr.io/cadvisor/cadvisor:v0.49.1
-    container_name: cadvisor
-    privileged: true
-    devices:
-      - /dev/kmsg:/dev/kmsg
-    volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:ro
-      - /sys:/sys:ro
-      - /var/lib/docker/:/var/lib/docker:ro
-      - /cgroup:/cgroup:ro
-    restart: unless-stopped
-    network_mode: host
-    labels:
-      org.label-schema.group: "monitoring"
-  
-

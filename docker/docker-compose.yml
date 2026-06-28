@@ -65,26 +65,6 @@ services:
     labels:
       org.label-schema.group: "monitoring"
 
-  cadvisor:
-    image: gcr.io/cadvisor/cadvisor:v0.49.1
-    container_name: cadvisor
-    privileged: true
-    devices:
-      - /dev/kmsg:/dev/kmsg
-    volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:ro
-      - /sys:/sys:ro
-      - /var/lib/docker:/var/lib/docker:ro
-      #- /cgroup:/cgroup:ro #doesn't work on MacOS only for Linux
-    restart: unless-stopped
-    expose:
-      - 8080
-    networks:
-      - monitor-net
-    labels:
-      org.label-schema.group: "monitoring"
-
   pushgateway:
     image: prom/pushgateway:v1.8.0
     container_name: pushgateway

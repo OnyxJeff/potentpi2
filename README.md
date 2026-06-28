@@ -142,12 +142,6 @@ chmod +x docker-up-all.sh
 ./docker-up-all.sh
 ```
 
-- Installing UniFi OS Server
-```bash
-cd ~/pp2-mimir/docker/unifi
-docker compose up -d
-```
-
 ---
 
 ## Acknowledgements
