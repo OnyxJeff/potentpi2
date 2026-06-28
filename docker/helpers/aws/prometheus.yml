@@ -20,11 +20,6 @@ scrape_configs:
     static_configs:
       - targets: ['nodeexporter:9100']
 
-  - job_name: 'cadvisor'
-    scrape_interval: 5s
-    static_configs:
-      - targets: ['cadvisor:8080']
-
   - job_name: 'prometheus'
     scrape_interval: 10s
     static_configs:
@@ -36,16 +31,6 @@ scrape_configs:
     ec2_sd_configs:
       - region: us-east-1
         port: 9100
-    relabel_configs:
-        # Only monitor instances which have a tag called Monitoring "Monitoring"
-      - source_labels: [__meta_ec2_tag_Monitoring]
-        regex: On
-        action: keep
-
-  - job_name: 'cadvisor'
-    ec2_sd_configs:
-      - region: us-east-1
-        port: 9010
     relabel_configs:
         # Only monitor instances which have a tag called Monitoring "Monitoring"
       - source_labels: [__meta_ec2_tag_Monitoring]

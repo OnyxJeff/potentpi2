@@ -1,17 +1,17 @@
-# pp2-mimir
+# potentpi2
 
-![Build Status](https://github.com/OnyxJeff/pp2-mimir/actions/workflows/build.yml/badge.svg)
+![Build Status](https://github.com/OnyxJeff/potentpi2/actions/workflows/build.yml/badge.svg)
 ![Maintenance](https://img.shields.io/maintenance/yes/2026.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
-![GitHub release](https://img.shields.io/github/v/release/OnyxJeff/pp2-mimir)
-![Issues](https://img.shields.io/github/issues/OnyxJeff/pp2-mimir)
+![GitHub release](https://img.shields.io/github/v/release/OnyxJeff/potentpi2)
+![Issues](https://img.shields.io/github/issues/OnyxJeff/potentpi2)
 
 **Mimir** is the Monitoring server for my homelab, hosted on a Raspberry Pi 4.
 
 ## 📁 Repo Structure
 
 ```text
-pp2-mimir/
+potentpi2/
 ├── .github/workflows/      # CI for YAML validation
 ├── backup_logs/            # Oldest logs from update script
 ├── docker/                 # Docker container(s) for Network Monitoring
@@ -40,7 +40,7 @@ pp2-mimir/
   - Download repo
   ```bash
   cd
-  git clone https://github.com/OnyxJeff/pp2-mimir.git
+  git clone https://github.com/OnyxJeff/potentpi2.git
   ```
 ---
 
@@ -54,7 +54,7 @@ Choose Interface Options Enable i2c
 
 - Run setup_display_service.sh script
 ```bash
-cd ~/pp2-mimir/U6143_ssd1306
+cd ~/potentpi2/U6143_ssd1306
 chmod +x setup_display_service.sh
 sudo ./setup_display_service.sh
 ```
@@ -80,13 +80,13 @@ sudo ./setup_display_service.sh
 
 - Make the log folder for updates
 ```bash
-mkdir ~/pp2-mimir/logs
-mkdir ~/pp2-mimir/backup_logs
+mkdir ~/potentpi2/logs
+mkdir ~/potentpi2/backup_logs
 ```
 
 - Update and Upgrade the System via script:
 ```bash
-cd ~/pp2-mimir/scripts
+cd ~/potentpi2/scripts
 chmod +x apt-get-autoupdater.sh
 sudo ./apt-get-autoupdater.sh
 ```
@@ -100,11 +100,11 @@ sudo crontab -e
   - add the following to the bottom of the document:
   ```bash
   # OS-Auto-Updater
-    00 01 * * 0 bash $HOME/pp2-mimir/scripts/apt-get-autoupdater.sh
+    00 01 * * 0 bash $HOME/potentpi2/scripts/apt-get-autoupdater.sh
       # execute automatic update script and log every sunday at 01:00 am
-    50 00 1 * * /bin/bash -c 'cp $HOME/pp2-mimir/logs/apt-get-autoupdater.log $HOME/pp2-mimir/backup_logs/apt-get-autoupdater-$(date +\%Y\%m\%d).log'
+    50 00 1 * * /bin/bash -c 'cp $HOME/potentpi2/logs/apt-get-autoupdater.log $HOME/potentpi2/backup_logs/apt-get-autoupdater-$(date +\%Y\%m\%d).log'
       # saves monthly version of "apt-get-autoupdater.log" on the 1st of every month at 00:50 am
-    51 00 1 * * rm -f $HOME/pp2-mimir/logs/apt-get-autoupdater.log
+    51 00 1 * * rm -f $HOME/potentpi2/logs/apt-get-autoupdater.log
       # deletes old weekly log on the 1st of every month at 00:51 am
   ```
 
@@ -138,13 +138,11 @@ docker run hello-world
 docker compose version
 ```
 
----
-
 ### 📝 Installing your first container(s)
 
 - Installing Container Stack (via script)
 ```bash
-cd ~/pp2-mimir/scripts
+cd ~/potentpi2/scripts
 chmod +x docker-up-all.sh
 ./docker-up-all.sh
 ```
