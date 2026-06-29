@@ -1,0 +1,3 @@
+[submodule "docker/dock-prom"]
+	path = docker/dock-prom
+	url = https://github.com/OnyxJeff/dock-prom.git
